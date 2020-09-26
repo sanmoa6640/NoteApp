@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NoteApp.Views.HomeView"
+             NavigationPage.HasNavigationBar="true"
+             NavigationPage.HasBackButton="true"
+             >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <ListView ItemsSource="{Binding Notes}"
+                  HasUnevenRows="True"
+                  Grid.Row="0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center">
+                                <CheckBox Color="Blue"/>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" Grid.Row="0"  HorizontalOptions="Center" VerticalOptions="Center">
+                                <Label Text="{Binding Title}" FontSize="15"/>
+                                <Label Text="{Binding CreatetAt}" FontSize="12"/>
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Margin="10,10,10,10" 
+            Grid.Row="1"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            Text="+" 
+            FontSize="26" 
+            Command="{Binding AddNoteCommand}" HeightRequest="50" WidthRequest="300"/>
+    </Grid> 
+</ContentPage>
