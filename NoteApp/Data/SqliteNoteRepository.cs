@@ -17,7 +17,6 @@ namespace NoteApp.Data
         public SqliteNoteRepository(string dbPath)
         {
             _connection = new SQLiteAsyncConnection(dbPath);
-            _connection.DeleteAllAsync<Note>().Wait();
             _connection.CreateTableAsync<Note>().Wait();
 
         }

@@ -10,7 +10,6 @@ namespace NoteApp
     public partial class App : Application
     {
         static SqliteNoteRepository noteDataBase;
-
         public static SqliteNoteRepository NoteDatabase
         {
             get
@@ -27,7 +26,6 @@ namespace NoteApp
         {
             InitializeComponent();
             Locator.Initialize();
-            //InitializeRepository();
             InitializeMainPage();
         }
 
@@ -36,14 +34,26 @@ namespace NoteApp
             MainPage = new NavigationPage(Locator.Resolve<HomeView>());
         }
 
-        //private void InitializeRepository()
-        //{
-        //    INoteRepository repository = Locator.Resolve<INoteRepository>();
-        //    repository.Initialize();
-        //}
+        #region AppLifeCicleMethods
 
         protected override void OnStart()
         {
+            EraseCache();
+        }
+
+        private void EraseCache()
+        {
+
+            //var list = Directory.GetFiles(MyPath, "*");
+
+            //if (list.Length > 0)
+            //{
+            //    for (int i = 0; i < list.Length; i++)
+            //    {
+            //        File.Delete(list[i]);
+            //    }
+            //}
+            
         }
 
         protected override void OnSleep()
@@ -53,6 +63,6 @@ namespace NoteApp
         protected override void OnResume()
         {
         }
-        
+        #endregion
     }
 }

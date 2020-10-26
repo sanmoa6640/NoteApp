@@ -24,11 +24,15 @@ namespace NoteApp.Views
             {
                 Text = "Add",
                 Order = ToolbarItemOrder.Primary,
-                Priority = 0,
                 Command = notesViewModel.SaveNoteCommand
             };
             this.ToolbarItems.Add(item);
+            
         }
-        
+        protected async override void OnAppearing()
+        {
+            await ((NotesViewModel)BindingContext).RefreshUI();
+        }
+
     }
 }
